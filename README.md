@@ -20,7 +20,7 @@ They specify:
 - Destination suburb
 - Pick-up date/time
 
-We must then generate a unique booking reference number, booking date/time (i.e. the date/time the booking is made) and status with initial value “unassigned” for the request.
+We must then generate a unique booking reference number, booking date/time (i.e. the date/time the booking is made) and status with initial value "unassigned" for the request.
 Then add the request in a MySQL database.
 
 Once stored, the customer must be presented with the message:
@@ -39,7 +39,7 @@ Upon successfully assigning a taxi, the admin is presented with the message:
 
 > The booking request [bookingRefNumber] has been properly assigned
 
-## Out-of-Scope
+## Out of Scope
 
 - Authentication
 - Number of Passengers, Car Type, Building Type etc.
