@@ -1,2 +1,2 @@
-# CabsOnline-Taxi-Booking
-A Web Development Taxi Booking System with HTML, PHP, MySQL and AJAX
+# CabsOnline Taxi Bookings
+> A Web Development course Taxi Booking System with HTML, PHP, MySQL and AJAX
