@@ -1,6 +1,8 @@
-# CabsOnline Taxi Bookings
+# CabsOnline Taxi Bookings (Web Development Assignment 2)
 
 > A Taxi Booking System with HTML, PHP, MySQL and AJAX
+
+Overall, this assignment received full (40/40) marks as it met all required criteria.
 
 ## Actors
 
