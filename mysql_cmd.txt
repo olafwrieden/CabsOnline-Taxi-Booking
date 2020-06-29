@@ -1,0 +1,13 @@
+CREATE TABLE bookings (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+  customer_name VARCHAR(100) NOT NULL,
+  contact_number VARCHAR(100) NOT NULL,
+  unit_number VARCHAR(20) NULL,
+  street_number VARCHAR(255) NOT NULL,
+  street_name VARCHAR(255) NOT NULL,
+  suburb VARCHAR(255) NOT NULL,
+  destination_suburb VARCHAR(255) NOT NULL,
+  pickup DATETIME NOT NULL,
+  reference VARCHAR(255) NOT NULL UNIQUE,
+  status ENUM('unassigned','assigned') NOT NULL DEFAULT 'unassigned'
+)

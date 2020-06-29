@@ -1,0 +1,295 @@
+<!--
+This file is responsible for rendering the booking view on the client side.
+Author: Olaf Wrieden
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>CabsOnline | We are the simplest</title>
+    <meta name="description" content="CabsOnline | We are the simplest." />
+    <meta name="author" content="Olaf Wrieden" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./booking.js"></script>
+    <link rel="icon" type="image/ico" href="./favicon.ico" />
+  </head>
+  <body class="container is-fluid">
+    <!-- Navbar -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="./booking.html">
+          <img src="./logo.png" height="30" />
+        </a>
+        <a
+          role="button"
+          class="navbar-burger burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbar"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbar" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="./booking.html">
+            Book Now
+          </a>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <a class="button is-primary is-outlined" href="./admin.html">
+              Admin
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Body -->
+    <section className="section" style="margin-top: 20px;">
+      <div className="container">
+        <div class="columns">
+          <!-- Left -->
+          <div class="column">
+            <form action="javascript:createBooking()">
+              <h1 class="title">
+                Book Now
+              </h1>
+              <p class="subtitle">
+                Booking your taxi has never been simpler!
+              </p>
+
+              <div class="columns">
+                <!-- Name / Contact -->
+                <div class="column">
+                  <div class="field">
+                    <label class="label">Passenger Name</label>
+                    <div class="control has-icons-left">
+                      <input
+                        id="customer_name"
+                        class="input"
+                        type="text"
+                        placeholder="Jane Doe"
+                        pattern="[A-Za-z ]{1,32}"
+                        required
+                      />
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                      </span>
+                    </div>
+                    <p id="passenger_name_text" class="help is-success">
+                      Required
+                    </p>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="field">
+                    <label class="label">Contact Number</label>
+                    <div class="control has-icons-left">
+                      <input
+                        id="contact_number"
+                        class="input"
+                        type="text"
+                        placeholder="+64 123 456 789"
+                        pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
+                        required
+                      />
+                      <span class="icon is-small is-left">
+                        <i class="fa fa-phone"></i>
+                      </span>
+                    </div>
+                    <p class="help is-success">Required</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Unit / Street Numbers -->
+              <div class="columns is-multiline">
+                <div class="column is-3 is-3-tablet">
+                  <div class="field">
+                    <label class="label">Unit</label>
+                    <div class="control has-icons-left">
+                      <input
+                        id="unit_number"
+                        class="input"
+                        type="text"
+                        placeholder="3"
+                        pattern="[1-9A-Za-z ]{1,5}"
+                      />
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-home"></i>
+                      </span>
+                    </div>
+                    <p class="help is-info">Optional</p>
+                  </div>
+                </div>
+                <div class="column is-3 is-3-tablet">
+                  <div class="field">
+                    <label class="label">Street #</label>
+                    <div class="control has-icons-left">
+                      <input
+                        id="street_number"
+                        class="input"
+                        type="text"
+                        placeholder="12"
+                        pattern="[1-9A-Za-z ]{1,10}"
+                        required
+                      />
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-home"></i>
+                      </span>
+                    </div>
+                    <p class="help is-success">Required</p>
+                  </div>
+                </div>
+                <div class="column is-6 is-4-tablet">
+                  <div class="field">
+                    <label class="label">Street Name</label>
+                    <div class="control has-icons-left">
+                      <input
+                        id="street_name"
+                        class="input"
+                        type="text"
+                        placeholder="Steep Rd"
+                        pattern="[A-Za-z ]+"
+                        required
+                      />
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-home"></i>
+                      </span>
+                    </div>
+                    <p class="help is-success">Required</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Street Name -->
+              <div class="columns">
+                <div class="column">
+                  <div class="field">
+                    <label class="label">Suburb</label>
+                    <div class="control has-icons-left">
+                      <input
+                        id="suburb"
+                        class="input"
+                        type="text"
+                        placeholder="Auckland CBD"
+                        pattern="[A-Za-z ]+"
+                        required
+                      />
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-home"></i>
+                      </span>
+                    </div>
+                    <p class="help is-success">Required</p>
+                  </div>
+                </div>
+              </div>
+
+              <hr />
+
+              <!-- Destination / Pick-up -->
+              <div class="columns">
+                <div class="column">
+                  <div class="field is-6">
+                    <label class="label">Destination Suburb</label>
+                    <div class="control has-icons-left">
+                      <input
+                        id="destination_suburb"
+                        class="input"
+                        type="text"
+                        placeholder="Albany"
+                        pattern="[A-Za-z ]+"
+                        required
+                      />
+                      <span class="icon is-small is-left">
+                        <i class="fa fa-map-marker"></i>
+                      </span>
+                    </div>
+                    <p class="help is-success">Required</p>
+                  </div>
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column">
+                  <div class="field">
+                    <label class="label">Pickup Date</label>
+                    <div class="control has-icons-left">
+                      <input
+                        id="pickup_date"
+                        class="input"
+                        type="date"
+                        required
+                      />
+                      <span class="icon is-small is-left">
+                        <i class="fa fa-clock"></i>
+                      </span>
+                    </div>
+                    <p class="help is-success">Required</p>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="field">
+                    <label class="label">Pickup Time</label>
+                    <div class="control has-icons-left">
+                      <input
+                        id="pickup_time"
+                        class="input"
+                        type="time"
+                        required
+                      />
+                      <span class="icon is-small is-left">
+                        <i class="fa fa-clock"></i>
+                      </span>
+                    </div>
+                    <p class="help is-success">Required</p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                id="submissionError"
+                class="notification is-danger is-light is-hidden"
+              ></div>
+
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link" type="submit">
+                    Book Now
+                  </button>
+                </div>
+                <div class="control">
+                  <button class="button is-link is-light" type="reset">
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- Booking Ends -->
+
+          <!-- Right -->
+          <div class="column"></div>
+        </div>
+      </div>
+    </section>
+    <!-- Body End -->
+    <script src="./main.js"></script>
+  </body>
+</html>
